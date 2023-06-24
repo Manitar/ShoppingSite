@@ -2,8 +2,7 @@ import mongoose from "mongoose"
 const Schema = mongoose.Schema
 
 const ProductSchema = new Schema({
-  productName: { type: String, required: true },
-  imagePath: { type: String, required: true },
+  productName: { type: String, required: true }
 },
   { timestamps: true })
 

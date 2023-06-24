@@ -26,13 +26,26 @@ export const getProductList = async (req, res) => {
     res.status(500).json({ error: "Could not get product list" })
   }
 }
-
+// router.get("/search/:searchQuery", searchProducts)
+export const searchProducts = async (req, res) => {
+  try {
+    const { searchQuery } = req.params
+    const searchResults = await Product.find({
+      productName: { $regex: new RegExp(searchQuery, 'i') },
+    });
+    res.json(searchResults);
+  }
+  catch (error) {
+    res.status(500).json({ error: "Error while searching products" })
+  }
+}
 
 export const addProduct = async (req, res) => {
   try {
-    const { productName, imagePath } = req.body
+    const { productName } = req.body
+    console.log(productName)
 
-    const newProduct = new Product({ productName, imagePath });
+    const newProduct = new Product({ productName });
     const savedProduct = await newProduct.save()
 
     res.status(201).json(savedProduct)

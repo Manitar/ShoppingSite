@@ -1,25 +1,25 @@
-angular.module('myApp').controller('LoginController', function ($scope, $http, $location, UserService) {
+angular.module('myApp').controller('LoginController', function ($scope, $location, AuthService) {
   $scope.user = {
     email: '',
     password: ''
   };
 
   $scope.login = function () {
-    $http.post('http://localhost:5000/auth/login', $scope.user)
+    AuthService.login($scope.user)
       .then(function (response) {
-        $scope.error = ''
-        let firstName = response.data.user.firstName
-        let lastName = response.data.user.lastName
-        let id = response.data.user._id
-        UserService.setUser(firstName, lastName, id)
-        console.log(firstName, lastName, id)
-        console.log("Login successful, client side!")
-        $scope.error = ''
+        console.log("Login successful, client side!");
         $location.path('/home');
       })
       .catch(function (error) {
-        $scope.error = 'Invalid credentials'
-        console.log("Failed login")
+        console.log(error);
       })
   }
+
+
+  function checkAuth() {
+    if (AuthService.isAuthenticated()) {
+      $location.path('/home');
+    }
+  }
+  checkAuth();
 });

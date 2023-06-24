@@ -9,14 +9,36 @@
 
 <body>
   <div ng-controller="HomeController">
-    <p>Hello</p>
-    <p>{{user.firstName}} {{user.lastName}}</p>
+    <p>Hello, {{user.firstName}} {{user.lastName}}!</p>
+    <button ng-show="user.isAdmin" ng-click="adminPanel()">Admin Panel</button>
+    <button ng-click="logout()">Logout</button>
+    <br>
+    <br>
+    <div>
+      <input type="text" ng-model="query" placeholder="Search...">
+      <button ng-click="search(searchQuery)">Search</button>
+      <ul>
+        <li ng-show="searchQuery!==''" ng-repeat="item in items">
+          {{item.product.productName}}
+          <button ng-click="cartClick(item)">{{item.text}}</button>
+          {{item.quantity}}
+          <button ng-show="item.inCart && item.quantity >= 2" ng-click="changeQuantity(item, -1)">-1</button>
+          <button ng-show="item.inCart" ng-click="changeQuantity(item, 1)">+1</button>
+        </li>
+      </ul>
+    </div>
+    <br>
     <ul>
-      <li ng-repeat="item in items">
+      <li ng-show="searchQuery==''" ng-repeat="item in items">
         {{item.product.productName}}
         <button ng-click="cartClick(item)">{{item.text}}</button>
         {{item.quantity}}
+        <button ng-show="item.inCart && item.quantity >= 2" ng-click="changeQuantity(item, -1)">-1</button>
+        <button ng-show="item.inCart" ng-click="changeQuantity(item, 1)">+1</button>
       </li>
+      <br><br>
+      <button ng-click="purchaseItems()">Purchase items</button>
+      <br><br>
     </ul>
   </div>
 </body>

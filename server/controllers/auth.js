@@ -9,21 +9,25 @@ const secret_key = process.env.JWT_SECRET_KEY
 
 export const validateToken = async (req, res) => {
   try {
-    const token = req.query.token
+    const { token } = req.body
+    console.log(token)
     if (token) {
       const decoded = jwt.verify(token, secret_key) //This line verifies if the token is authorized
-      res.status(202).json(token) // 202 = Accepted
+
+      res.status(202).json(true) // 202 = Accepted
+      return true
     }
   }
   catch (error) {
     res.status(403).json({ error: "Token could not be validated" }) // 403 = Forbidden
+    return false
   }
 }
 
 
 export const register = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, isAdmin } = req.body;
     const checkEmail = await User.findOne({ email })
     if (checkEmail) {
       res.status(409).json({ error: "A user with that email is already registered" }) // 409 = Conflict
@@ -37,6 +41,7 @@ export const register = async (req, res) => {
       lastName,
       email,
       password: hashedPassword,
+      isAdmin,
       cart: [],
       purchasedItems: []
     });
@@ -64,7 +69,7 @@ export const login = async (req, res) => {
     }
 
 
-    const token = jwt.sign({ email: user.email, firstName: user.firstName, lastName: user.lastName }, secret_key, { expiresIn: '4h' });
+    const token = jwt.sign({ id: user._id, email: user.email, firstName: user.firstName, lastName: user.lastName, isAdmin: user.isAdmin }, secret_key, { expiresIn: '4h' });
 
     res.json({ message: "Login successful", user, token });
   } catch (error) {

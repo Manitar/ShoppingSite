@@ -3,10 +3,10 @@ import express from 'express'
 
 const router = express.Router()
 
-/* GET */
-router.get("/validate", validateToken)
+
 
 /* POST */
+router.post("/validate", validateToken)
 router.post("/login", login)
 router.post("/register", register)
 

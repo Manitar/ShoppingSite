@@ -2,7 +2,6 @@ import Product from "../models/Product.js";
 import User from "../models/User.js"
 
 
-
 export const getUserList = async (req, res) => {
   try {
     const users = await User.find();
@@ -67,7 +66,6 @@ export const addProductToCart = async (req, res) => {
       quantity: 1
     }
     user.cart.set(productId, productInCart)
-    console.log(user.cart)
     await user.save();
 
     res.json({ message: "Successfully added product to cart" })
@@ -97,12 +95,13 @@ export const updateQuantity = async (req, res) => {
       return
     }
 
+    ;
     let productInCart = user.cart.get(productId)
     productInCart.quantity += numUpdate
     user.cart.set(productId, productInCart)
-    console.log(user.cart)
-    await user.save();
-    res.json({ user })
+    const newUser = await User.findByIdAndUpdate(userId, { cart: user.cart }, { new: true })
+
+    res.json({ newUser })
 
   }
   catch (error) {
@@ -114,6 +113,7 @@ export const updateQuantity = async (req, res) => {
 // 
 export const purchaseItems = async (req, res) => {
   try {
+    let purchaseId
     const { userId } = req.params
     const user = await User.findById(userId)
 
@@ -121,10 +121,18 @@ export const purchaseItems = async (req, res) => {
       res.status(404).json({ error: "Could not find user" })
       return
     }
-
-    user.purchasedItems.push(user.cart)
+    // Object.keys(user.cart).forEach((id) => {
+    //   user.purchasedItems.push({ purchaseId, cartItem: user.cart[id.toString()] });
+    // });
+    if (user.purchasedItems.length == 0) {
+      purchaseId = 1
+    }
+    else {
+      purchaseId = user.purchasedItems[user.purchasedItems.length - 1].purchaseId + 1
+    }
+    user.cart.forEach((value, key) => user.purchasedItems.push({ purchaseId, cartItem: user.cart.get(key) }))
     user.cart.clear()
-    await user.save();
+    const newUser = await User.findByIdAndUpdate(userId, { cart: user.cart, purchasedItems: user.purchasedItems }, { new: true })
 
     res.json({ message: "Successfully purchased items in cart!" })
   }

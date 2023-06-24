@@ -23,6 +23,9 @@
       <label for="password">Enter password:</label>
       <input type="password" name="password" id="password" ng-model="user.password" required>
       <br>
+      <label for="admin">What are you?</label>
+      <input type="radio" id="admin" name="adminOrUser" ng-model="user.isAdmin" value="admin">Admin
+      <input type="radio" id="user" name="adminOrUser" ng-model="user.isAdmin" value="user">User
       <button type="submit">Register</button>
     </form>
     <br><br>
