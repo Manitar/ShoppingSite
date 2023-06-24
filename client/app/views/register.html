@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div ng-controller="RegisterController">
+    <h2>Register Form</h2>
+    <form ng-submit="register()">
+      <label for="firstName">Enter first name:</label>
+      <input type="text" name="firstName" id="firstName" ng-model="user.firstName" required>
+      <br>
+      <label for="lastName">Enter last name:</label>
+      <input type="text" name="lastName" id="lastName" ng-model="user.lastName" required>
+      <br>
+      <label for="email">Enter email:</label>
+      <input type="email" name="email" id="email" ng-model="user.email" required>
+      <br>
+      <label for="password">Enter password:</label>
+      <input type="password" name="password" id="password" ng-model="user.password" required>
+      <br>
+      <button type="submit">Register</button>
+    </form>
+    <br><br>
+
+    <a ng-href="#!/login">Already have an account? Click here</a>
+</body>
+
+</html>
