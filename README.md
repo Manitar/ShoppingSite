@@ -1,16 +1,23 @@
 How to run the app:
 
 Open 2 seperate terminals.
+In terminal 1, navigate to client directory.
+In terminal 2, navigate to server directory.
 
-Terminal 1: Navigate to client directory.
-Make sure the http server package is installed (npm install -g http-server)
+In both:
+```
+npm install
+```
+
+
+Terminal 1 (client directory):
 
 Run the client:
 ```
 http-server -c-1
 ```
 
-Terminal 2: Navigate to the server directory.
+Terminal 2 (server directory):
 
 Run the server:
 ```
