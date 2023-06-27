@@ -26,6 +26,8 @@ npm run start
 
 Now, type in localhost:8080 in your browser.
 
+For the event page: Dimensions are 375 x 815.
+
 Link to diagram:
 https://lucid.app/lucidchart/be27e600-d172-41bd-a65c-a8ff2fe4462a/edit?viewport_loc=-611%2C-365%2C3156%2C1440%2C0_0&invitationId=inv_f7fe434d-5478-4aae-9d15-d0e9866c33d3
 
