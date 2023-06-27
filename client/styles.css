@@ -37,9 +37,27 @@
 }
 
 
-#option span.active {
+/* #option span.active {
+  font-weight: bold;
   text-decoration: underline;
   color: #007AFF
+} */
+
+#option span.active {
+  font-weight: bold;
+  position: relative;
+  text-decoration: none;
+  color: #007AFF;
+}
+
+#option span.active::after {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  width: 100%;
+  border-bottom: 2.5px solid #007AFF;
+  border-radius: 2px;
 }
 
 /* End Navbar */
