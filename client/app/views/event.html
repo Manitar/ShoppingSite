@@ -32,7 +32,7 @@
       <br>
       <p class="preview-text">Preview</p>
       <div class="rectangle" ng-style="{'background-color': selectedColor}">
-        <p>Men's haircut</p>
+        <p class="haircut-text">Men's haircut</p>
       </div>
     </div>
     <!-- End Preview -->
@@ -92,21 +92,30 @@
       <!-- service, duration, customer name, paid or not -->
       <div class="text-list">
         <form>
-          <label ng-class="{ 'radioActive': selectedRadio === 'service' }" for="service">Service</label>
-          <input type="radio" ng-click="clickRadio('service')" class="radio-button" id="service" name="choose-text"
-            value="service"><br>
-
-          <label ng-class="{ 'radioActive': selectedRadio === 'duration' }" for="duration">Duration</label>
-          <input type="radio" ng-click="clickRadio('duration')" class="radio-button" id="duration" name="choose-text"
-            value="duration"><br>
-
-          <label for="customer-name" ng-class="{ 'radioActive': selectedRadio === 'customer' }">Customer name</label>
-          <input type="radio" ng-click="clickRadio('customer')" class="radio-button" id="customer-name"
-            name="choose-text" value="customer-name"><br>
-
-          <label for="paid" ng-class="{ 'radioActive': selectedRadio === 'paid' }">Paid or not</label>
-          <input type="radio" ng-click="clickRadio('paid')" class="radio-button" id="paid" name="choose-text"
-            value="paid"><br>
+          <div class="service-div">
+            <label ng-class="{ 'radioActive': selectedRadio === 'service' }" class="radio-text"
+              for="service">Service</label>
+            <input type="radio" ng-click="clickRadio('service')" class="radio-button" id="service" name="choose-text"
+              value="service"><br>
+          </div>
+          <div class="duration-div">
+            <label ng-class="{ 'radioActive': selectedRadio === 'duration' }" class="radio-text"
+              for="duration">Duration</label>
+            <input type="radio" ng-click="clickRadio('duration')" class="radio-button" id="duration" name="choose-text"
+              value="duration"><br>
+          </div>
+          <div class="customer-div">
+            <label for="customer-name" ng-class="{ 'radioActive': selectedRadio === 'customer' }"
+              class="radio-text">Customer name</label>
+            <input type="radio" ng-click="clickRadio('customer')" class="radio-button" id="customer-name"
+              name="choose-text" value="customer-name"><br>
+          </div>
+          <div class="paid-div">
+            <label for="paid" ng-class="{ 'radioActive': selectedRadio === 'paid' }" class="radio-text">Paid or
+              not</label>
+            <input type="radio" ng-click="clickRadio('paid')" class="radio-button" id="paid" name="choose-text"
+              value="paid"><br>
+          </div>
         </form>
       </div>
 

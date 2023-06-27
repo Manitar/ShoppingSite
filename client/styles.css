@@ -25,6 +25,7 @@
 
 }
 
+
 /* End Header */
 
 /* Navbar */
@@ -65,9 +66,11 @@
 }
 
 .rectangle p {
+  display: inline-block;
   font-size: 13px;
   color: white;
-  margin-left: 10px;
+  margin-left: 12px;
+  margin-top: 5px;
 }
 
 /* End Preview */
@@ -308,15 +311,45 @@
   border-color: #007AFF;
 }
 
-/* #service {
-  width: 24px margin-left: 230px;
-} */
+.radio-text {
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
 
-#duration {}
+.service-div {}
 
-#customer-name {}
+.duration-div {
+  margin-top: 30px;
+}
 
-#paid {}
+.customer-div {
+  margin-top: 30px;
+}
+
+.paid-div {
+  margin-top: 30px;
+}
+
+#service {
+  width: 20px;
+  margin-left: 228.5px;
+}
+
+#duration {
+  width: 20px;
+  margin-left: 216.35px;
+}
+
+#customer-name {
+  width: 20px;
+  margin-left: 163.1px;
+}
+
+#paid {
+  width: 20px;
+  margin-left: 201.80px;
+}
 
 
 
