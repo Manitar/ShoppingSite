@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+</head>
+<body>
+    <div ng-controller="ProductController">
+        <br><br>
+        Name:<p ng-bind="product.productName">Name:</p>
+        Price:<p ng-bind="product.price">Price:</p>
+        Description:<p ng-bind="product.description">Description:</p>
+        <div>
+            <img ng-src="{{product.imageUrl}}" alt="Image of cheese">
+        </div>
+
+        <form ng-submit="editPrice()">
+            <label for="price">Enter price:</label>
+            <input type="text" name="price" id="price" ng-model="price" required>
+            <button type="submit">Edit price</button>
+        </form>
+        <button ng-click="backHome()">Back to home</button>
+    </div>
+</body>
+</html>

@@ -19,7 +19,7 @@
       <button ng-click="search(searchQuery)">Search</button>
       <ul>
         <li ng-show="searchQuery!==''" ng-repeat="item in items">
-          {{item.product.productName}}
+          <button ng-click="itemClicked(item)">{{item.product.productName}}</button>
           <button ng-click="cartClick(item)">{{item.text}}</button>
           {{item.quantity}}
           <button ng-show="item.inCart && item.quantity >= 2" ng-click="changeQuantity(item, -1)">-1</button>
@@ -30,7 +30,7 @@
     <br>
     <ul>
       <li ng-show="searchQuery==''" ng-repeat="item in items">
-        {{item.product.productName}}
+        <button ng-click="itemClicked(item)">{{item.product.productName}}</button>
         <button ng-click="cartClick(item)">{{item.text}}</button>
         {{item.quantity}}
         <button ng-show="item.inCart && item.quantity >= 2" ng-click="changeQuantity(item, -1)">-1</button>
