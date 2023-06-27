@@ -2,6 +2,10 @@ var app = angular.module("myApp", [
   "ngRoute",
   "angular-jwt",
   "angular-storage",
+  // 'ngMaterial',
+  // 'ngAnimate',
+  // 'ngAria',
+  // 'ngMessages'
 ]);
 
 // Config routes
@@ -26,6 +30,10 @@ app.config(function ($routeProvider) {
     .when("/product", {
       templateUrl: "/app/views/product.html",
       controller: "ProductController",
+    })
+    .when("/event", {
+      templateUrl: "/app/views/event.html",
+      controller: "EventController",
     })
     .otherwise({
       redirectTo: "/login",

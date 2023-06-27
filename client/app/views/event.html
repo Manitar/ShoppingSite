@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div ng-controller="EventController" class="open-sans-container">
+    <!-- Header -->
+    <div id="header">
+      <span class="bi bi-arrow-left-short" ng-click="navigateHome()"></span>
+      <span class="event-preview">Event Preview</span>
+    </div>
+    <!-- End Header -->
+
+    <!-- Choose option -->
+    <div id="option">
+      <span ng-class="{ 'active': selectedOption === 'approved' }" ng-click="selectOption('approved')">Approved</span>
+      <span ng-class="{ 'active': selectedOption === 'waiting' }" ng-click="selectOption('waiting')">Waiting</span>
+      <span ng-class="{ 'active': selectedOption === 'cancelled' }"
+        ng-click="selectOption('cancelled')">Cancelled</span>
+      <span ng-class="{ 'active': selectedOption === 'break' }" ng-click="selectOption('break')">Break</span>
+    </div id="option">
+    <!-- End Choose option -->
+
+    <!-- Preview -->
+    <div id="preview">
+      <br>
+      <p class="preview-text">Preview</p>
+      <div class="rectangle" ng-style="{'background-color': selectedColor}">
+        <p>Men's haircut</p>
+      </div>
+    </div>
+    <!-- End Preview -->
+
+    <!-- Customize -->
+    <div id="customize" ng-style="{'background-color': backgroundColor  }">
+      <br>
+      <p class="customize-text">Customize</p>
+      <div>
+        <div class="choose">
+          <div class="choose-color">
+            <span class="bi bi-paint-bucket"></span>
+            <span class="line-color" ng-click="toggleColorMenu()">
+              <span class="color-word">Color</span>
+              <span class="bi bi-chevron-down"></span>
+            </span>
+          </div>
+          <div class="choose-text">
+            <span class="bi bi-file-earmark-font"></span>
+            <span class="line-text" ng-click="toggleTextMenu()">
+              <span class="text-word">Text</span>
+              <span class="bi bi-chevron-down"></span>
+            </span>
+          </div>
+          <div class="choose-arrival">
+            <span class="bi bi-check2-all"></span>
+            <span class="line-arrival" ng-click="navigateHome()">
+              <span class="arrival-word">Confirmed arrival</span>
+              <span class="bi bi-chevron-down"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="color-menu" ng-show="showColorMenu">
+      <div class="mini-rectangle-top"></div>
+      <p class="first-line">Approved background color</p>
+      <p class="second-line">This affects all...(description)</p>
+      <div class="color-list">
+        <div class="color-option" ng-click="changeColor(color)" ng-repeat="color in colors">
+          <div class="color-circle" ng-style="{'background-color': color}">
+          </div>
+        </div>
+      </div>
+      <p class="custom-color-text">Custom Color</p>
+      <div class="custom-color-circle" ng-style="{'background-color': white}">
+        <p class="bi-plus"></p>
+      </div>
+      <div class="mini-rectangle-bottom"></div>
+    </div>
+
+    <div class="text-menu" ng-show="showTextMenu">
+      <div class="mini-rectangle-top"></div>
+      <p class="first-line">Text preview in approved event
+      </p>
+      <p class="second-line">description</p>
+      <!-- service, duration, customer name, paid or not -->
+      <div class="text-list">
+        <form>
+          <label ng-class="{ 'radioActive': selectedRadio === 'service' }" for="service">Service</label>
+          <input type="radio" ng-click="clickRadio('service')" class="radio-button" id="service" name="choose-text"
+            value="service"><br>
+
+          <label ng-class="{ 'radioActive': selectedRadio === 'duration' }" for="duration">Duration</label>
+          <input type="radio" ng-click="clickRadio('duration')" class="radio-button" id="duration" name="choose-text"
+            value="duration"><br>
+
+          <label for="customer-name" ng-class="{ 'radioActive': selectedRadio === 'customer' }">Customer name</label>
+          <input type="radio" ng-click="clickRadio('customer')" class="radio-button" id="customer-name"
+            name="choose-text" value="customer-name"><br>
+
+          <label for="paid" ng-class="{ 'radioActive': selectedRadio === 'paid' }">Paid or not</label>
+          <input type="radio" ng-click="clickRadio('paid')" class="radio-button" id="paid" name="choose-text"
+            value="paid"><br>
+        </form>
+      </div>
+
+      <div class="mini-rectangle-bottom"></div>
+    </div>
+  </div>
+</body>
+
+</html>

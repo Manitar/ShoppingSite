@@ -169,21 +169,9 @@ angular
         $location.path("/admin");
       };
 
-      // function checkAuth() {
-      //   AuthService.isAuthenticated()
-      //     .then(function (isAuth) {
-      //       if (!isAuth) {
-      //         $location.path('/login');
-      //       } else {
-      //         $scope.user = AuthService.getUser();
-      //         userId = AuthService.getUser().id;
-      //       }
-      //     })
-      //     .catch(function (error) {
-      //       console.error('Authentication error:', error);
-      //       $location.path('/login');
-      //     });
-      // }
+      $scope.eventPage = function () {
+        $location.path('/event')
+      }
 
       function checkAuth() {
         if (!AuthService.isAuthenticated()) {
