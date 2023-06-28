@@ -282,12 +282,12 @@
   margin-top: 2px
 }
 
-.mini-rectangle-bottom {
+.mini-rectangle-bottom-text {
   width: 134px;
   height: 5px;
   background-color: black;
   margin-left: 121px;
-  margin-top: 60px;
+  margin-top: 84px;
   border-radius: 4px
 }
 
@@ -364,6 +364,14 @@
   margin-left: 201.80px;
 }
 
+.mini-rectangle-bottom-color {
+  width: 134px;
+  height: 5px;
+  background-color: black;
+  margin-left: 121px;
+  margin-top: 48px;
+  border-radius: 4px
+}
 
 
 /* End Text menu
